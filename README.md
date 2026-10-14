@@ -17,4 +17,5 @@ Then follow the chapter. Claude's code will look different from anyone else's, a
 the tests check what your program does, not how it was written.
 
 Checked with Claude Code 2.1.296 (2026-10-13).
+What changed since printing: https://reid-weston.github.io/claude-code-made-simple/
 The starter files are free to use, change and share (MIT license).
