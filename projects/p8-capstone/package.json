@@ -1,0 +1,10 @@
+{
+  "name": "invoice-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Claude Code Made Simple, Project 8 (capstone)",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "test": "node --test --test-reporter=spec --test-concurrency=1 \"tests/**/*.test.js\""
+  }
+}

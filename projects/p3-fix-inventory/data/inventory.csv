@@ -1,0 +1,11 @@
+sku,name,category,quantity,reorder_level,reorder_to,unit_cost
+HL-1001,Deck Screws 2.5in (1 lb box),Fasteners,42,20,80,8.49
+HL-1002,Wood Glue 16 oz,Adhesives,12,12,40,6.25
+HL-1003,Pine Board 1x6x8,Lumber,8,15,60,11.80
+HL-1004,Drywall Sheet 4x8,Drywall,30,10,50,14.95
+HL-1005,Paint Roller Kit,Paint,5,6,24,12.99
+HL-1006,Exterior Primer 1 gal,Paint,18,8,30,27.50
+HL-1007,Concrete Mix 50 lb,Masonry,64,25,100,7.35
+HL-1008,Safety Glasses,Safety,9,10,40,4.10
+HL-1009,Work Gloves (pair),Safety,22,15,60,5.75
+HL-1010,Silicone Caulk Clear,Adhesives,3,10,36,5.49

@@ -1,0 +1,7 @@
+{
+  "name": "harbor-lane-stock-tool",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Claude Code Made Simple, Project 3",
+  "scripts": { "test": "node --test --test-reporter=spec \"tests/**/*.test.js\"" }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "bookings-live-checks",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Claude Code Made Simple, Project 7 (copy checks/ into your Project 4 folder)",
+  "scripts": { "test": "node --test --test-reporter=spec \"checks/**/*.test.js\"" }
+}

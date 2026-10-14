@@ -1,0 +1,7 @@
+{
+  "name": "claude-code-made-simple-extras",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Claude Code Made Simple, Part 3 example files",
+  "scripts": { "test": "node --test --test-reporter=spec \"tests/**/*.test.js\"" }
+}

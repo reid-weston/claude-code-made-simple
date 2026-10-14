@@ -1,0 +1,7 @@
+{
+  "Groceries": ["whole foods", "trader joe", "safeway"],
+  "Eating out": ["cafe", "pizza", "doordash", "taqueria"],
+  "Transport": ["shell", "chevron", "uber", "parking"],
+  "Bills": ["comcast", "pg&e", "verizon", "rent"],
+  "Software": ["adobe", "dropbox", "quickbooks", "claude"]
+}

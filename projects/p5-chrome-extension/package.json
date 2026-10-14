@@ -1,0 +1,8 @@
+{
+  "name": "tab-tidy",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Claude Code Made Simple, Project 5",
+  "scripts": { "test": "node --test --test-reporter=spec \"tests/**/*.test.js\"" }
+}
