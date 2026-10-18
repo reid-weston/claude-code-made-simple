@@ -58,10 +58,14 @@ test('works on a different CSV file', () => {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'exp-'));
   const csv = path.join(tmp, 'small.csv');
   fs.writeFileSync(csv, 'Date,Description,Amount\n2026-10-01,SAFEWAY,-10.00\n2026-10-02,PAYCHECK,50.00\n');
-  const r = run(csv);
-  assert.equal(r.status, 0, r.stderr);
-  assert.match(r.stdout, /Spending report: October 2026/);
-  assert.match(r.stdout, /\| Groceries \| \$10\.00 \| 100\.0% \|/);
+  try {
+    const r = run(csv);
+    assert.equal(r.status, 0, r.stderr);
+    assert.match(r.stdout, /Spending report: October 2026/);
+    assert.match(r.stdout, /\| Groceries \| \$10\.00 \| 100\.0% \|/);
+  } finally {
+    run();   // put Daniel's September report back in report.md
+  }
 });
 
 test('explains a missing file and exits with code 1', () => {
