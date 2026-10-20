@@ -1,5 +1,5 @@
 // Starts the app as a real server for the tests: a free port, a fresh database file
-// and a known admin key. Not a test file itself.
+// and a fixed TODAY. Not a test file itself.
 const { spawn } = require('node:child_process');
 const fs = require('node:fs');
 const net = require('node:net');
@@ -17,7 +17,7 @@ function freePort() {
 
 async function start(dbPath) {
   const port = await freePort();
-  const db = dbPath || path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'inv-')), 'bookings.db');
+  const db = dbPath || path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'inv-')), 'invoices.db');
   const child = spawn(process.execPath, ['server.js'], {
     cwd: dir, env: { ...process.env, PORT: String(port), DB_PATH: db, TODAY, NODE_ENV: 'test' },
     stdio: ['ignore', 'pipe', 'pipe'],
@@ -43,9 +43,8 @@ function stop(child) {
 }
 
 const api = (base) => ({
-  get: (p, key) => fetch(base + p, { headers: key ? { 'x-admin-key': key } : {} }),
+  get: (p) => fetch(base + p),
   post: (p, body) => fetch(base + p, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) }),
-  del: (p, key) => fetch(base + p, { method: 'DELETE', headers: key ? { 'x-admin-key': key } : {} }),
 });
 
 module.exports = { dir, start, api, TODAY };
