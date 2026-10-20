@@ -1,5 +1,6 @@
 // PreToolUse hook for git commit: run the tests first, and block the commit if any fail.
-// Registered with "if": "Bash(git commit *)", so it only runs when Claude commits.
+// Registered twice in settings.json, with "if": "Bash(git commit *)" and "PowerShell(git commit *)",
+// so it runs whenever Claude commits, in either shell.
 const { spawnSync } = require('node:child_process');
 
 const project = process.env.CLAUDE_PROJECT_DIR || process.cwd();

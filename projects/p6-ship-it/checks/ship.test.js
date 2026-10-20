@@ -50,5 +50,7 @@ test('a workflow runs the tests on every push and pull request', () => {
 });
 
 test('a pull request was merged and main was pulled since', () => {
-  assert.ok(git('log', '--merges', '--format=%H', '-n', '1').out, 'merge a pull request on GitHub, then git pull on main');
+  // GitHub names the merge commit "Merge pull request #<n> ...", which tells it apart from merges made on your computer.
+  const merged = git('log', '--merges', '--grep=^Merge pull request #', '--format=%H', '-n', '1').out;
+  assert.ok(merged, 'merge a pull request on GitHub, then git pull on main');
 });

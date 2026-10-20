@@ -13,7 +13,8 @@ process.stdin.on('end', () => {
 
   const project = process.env.CLAUDE_PROJECT_DIR || input.cwd || process.cwd();
   const rel = path.relative(project, path.resolve(project, file)).split(path.sep).join('/');
-  const isTest = /^(tests|checks)\//.test(rel);
+  // A worktree is a full copy of the project inside .claude/worktrees/<name>/, so look past that prefix too.
+  const isTest = /^(\.claude\/worktrees\/[^/]+\/)?(tests|checks)\//.test(rel);
 
   if (isTest && fs.existsSync(path.resolve(project, file))) {
     console.error(`Blocked: ${rel} is an existing test. Tests define done, so they don't change. ` +

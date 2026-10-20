@@ -23,6 +23,14 @@ test('protect-tests blocks a change to an existing test', () => {
   assert.match(r.stderr, /Blocked: tests\/existing\.test\.js/);
 });
 
+test('protect-tests also guards existing tests inside a worktree', () => {
+  const wt = path.join(project, '.claude', 'worktrees', 'holidays', 'tests');
+  fs.mkdirSync(wt, { recursive: true });
+  fs.writeFileSync(path.join(wt, 'existing.test.js'), '// a test\n');
+  assert.equal(run('protect-tests.js', edit(path.join(wt, 'existing.test.js'))).status, 2);
+  assert.equal(run('protect-tests.js', edit(path.join(wt, 'new.test.js'))).status, 0);
+});
+
 test('protect-tests allows a new test file and any other file', () => {
   assert.equal(run('protect-tests.js', edit(path.join(project, 'tests', 'new.test.js'))).status, 0);
   assert.equal(run('protect-tests.js', edit(path.join(project, 'server.js'))).status, 0);
@@ -46,4 +54,5 @@ test('the settings file registers both hooks with node, so they work on every pl
   const all = s.hooks.PreToolUse.flatMap((m) => m.hooks);
   assert.ok(all.every((h) => h.command === 'node' && h.args[0].includes('${CLAUDE_PROJECT_DIR}/.claude/hooks/')));
   assert.ok(all.some((h) => h.if === 'Bash(git commit *)'));
+  assert.ok(all.some((h) => h.if === 'PowerShell(git commit *)'), 'on Windows Claude may commit through PowerShell');
 });
